@@ -4,11 +4,17 @@ import cv2
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing.image import img_to_array
 
+@st.cache_data
 # Load the model
-try:
-    model = load_model('models/segmentation_model.hdf5')
-except Exception as e:
-    st.error(f"Error loading model: {e}")
+def load_trained_model():
+    try:
+        model = load_model('models/segmentation_model.hdf5')
+        return model
+    except Exception as e:
+        st.error(f"Error loading model: {e}")
+        return None
+
+model = load_trained_model()
 
 def perform_segmentation(image, model, threshold=0.5):
     image_resized = cv2.resize(image, (256, 256))
