@@ -1,4 +1,4 @@
-streamlit
-numpy
-opencv-python
-tensorflow
+streamlit>=1.50,<2
+numpy>=1.26
+opencv-python-headless>=4.10,<5
+onnxruntime>=1.20

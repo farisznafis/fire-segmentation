@@ -1,0 +1,21 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      # Inference helpers only need numpy + OpenCV; TensorFlow is not required for tests.
+      - run: pip install "numpy>=1.26,<2" "opencv-python-headless>=4.10,<5" pytest ruff
+      - run: ruff check .
+      - run: ruff format --check .
+      - run: pytest -q

@@ -1,0 +1,8 @@
+# Training dependencies. Install PyTorch with CUDA first for GPU training, e.g.:
+#   pip install torch torchvision --index-url https://download.pytorch.org/whl/cu124
+-r requirements.txt
+torch>=2.4
+torchvision
+segmentation-models-pytorch>=0.5
+albumentations>=2.0
+onnx

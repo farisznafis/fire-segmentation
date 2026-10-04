@@ -1,0 +1,5 @@
+-r requirements-train.txt
+pytest
+ruff
+jupyter
+matplotlib
